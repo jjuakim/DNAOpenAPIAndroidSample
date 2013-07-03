@@ -5,32 +5,50 @@
     android:orientation="vertical"
     tools:context=".SearchAPIActivity" >
 
-    <Button
-        android:id="@+id/btnSearchBoardSync"
+    <TextView 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txSearchBoardSync" />
-    <Button
-        android:id="@+id/btnSearchBoardAsync"
+        android:text="@string/txSelectAPI"
+     />
+    <Spinner
+        android:id="@+id/spnSearch"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txSearchBoardAsync" />
-     <Button
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnSearchSync"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txSearchSync" />
+
+        <Button
+            android:id="@+id/btnSearchAsync"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/txSearchAsync" />
+    </LinearLayout>
+
+    <Button
         android:id="@+id/btnAsyncTest"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/txAsyncTest" />
-    
-    <ScrollView 
-    android:id="@+id/scrollView"
-           android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        >
-     <TextView
+
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvResult"
-         />
-</ScrollView>
-   
+        android:layout_height="fill_parent">
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+
 </LinearLayout>

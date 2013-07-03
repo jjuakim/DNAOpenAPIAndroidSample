@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <string-array name="search">
+        <item>게시판 검색</item>
+        <item>동영상 검색</item>
+        <item>블로그 검색</item>
+        <item>웹 검색</item>
+        <item>이미지 검색</item>
+        <item>지식 검색</item>
+        <item>책 검색</item>
+        <item>카페 검색</item>
+    </string-array>
+</resources>

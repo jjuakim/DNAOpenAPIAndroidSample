@@ -6,7 +6,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="btnName">Button</string>
 	<string name="txSearchAPI">검색API</string>
-	<string name="txSearchBoardSync">게시판 동기 검색</string>
-	<string name="txSearchBoardAsync">게시판 비동기 검색</string>
-		<string name="txAsyncTest">동기화테스트</string>
+	<string name="txSearchSync">동기 검색</string>
+	<string name="txSearchAsync">비동기 검색</string>
+	<string name="txAsyncTest">동기화테스트</string>
+	<string name="txSelectAPI">API를 선택하세요</string>	
 </resources>
