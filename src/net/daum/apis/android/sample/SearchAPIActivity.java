@@ -1,18 +1,20 @@
 package net.daum.apis.android.sample;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import net.daum.apis.android.common.DaumOpenApiCommon;
 import net.daum.apis.android.common.DaumOpenApiCommon.OutputType;
-import net.daum.apis.android.common.DaumOpenApiCommon.SortType;
+import net.daum.apis.android.common.DaumOpenApiCommon.SearchBoardSortType;
+import net.daum.apis.android.common.DaumOpenApiCommon.SearchVideoSortType;
 import net.daum.apis.android.common.DaumOpenApiSDKException;
 import net.daum.apis.android.conn.RequestListener;
 import net.daum.apis.android.conn.ResponseData;
 import net.daum.apis.android.search.Search;
 import net.daum.apis.android.search.SearchBoard;
-import net.daum.apis.android.search.datamodel.BoardResult.BoardData;
+import net.daum.apis.android.search.SearchVideo;
+import net.daum.apis.android.search.datamodel.SearchBoardResult.BoardData;
+import net.daum.apis.android.search.datamodel.SearchVideoResult.VideoData;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -98,6 +100,8 @@ public class SearchAPIActivity extends Activity implements OnClickListener{
 			try {
 				if(searchWhat == Search.BOARD)
 					searchBoardSync();
+				else if(searchWhat == Search.VIDEO)
+					searchVideoSync();
 				else {
 					toast = Toast.makeText(this,  "구현되지않음", Toast.LENGTH_SHORT);
 					toast.show();
@@ -116,6 +120,8 @@ public class SearchAPIActivity extends Activity implements OnClickListener{
 				try {
 					if(searchWhat == Search.BOARD)
 						searchBoardAsync();
+					else if(searchWhat == Search.VIDEO)
+						searchVideoAsync();
 					else {
 						toast = Toast.makeText(this,  "구현되지않음", Toast.LENGTH_SHORT);
 						toast.show();
@@ -146,7 +152,7 @@ public class SearchAPIActivity extends Activity implements OnClickListener{
 	}
 	
 	private void searchBoardSync() throws InterruptedException, ExecutionException, IOException {
-		Search board = new SearchBoard("daum", 10, 1, SortType.ACCU, OutputType.JSON);
+		Search board = new SearchBoard("daum", 10, 1, SearchBoardSortType.ACCU, OutputType.JSON);
 		BoardData result = (BoardData)board.run();	
 		setResponseResult("[[Sync]]\n" +  result.toString());
 	}
@@ -154,6 +160,17 @@ public class SearchAPIActivity extends Activity implements OnClickListener{
 	private void searchBoardAsync() throws IOException, InterruptedException, ExecutionException, DaumOpenApiSDKException {
 		Search board = new SearchBoard("daum");
 		board.runAsync(requestListener);	
+	}
+	
+	private void searchVideoSync() throws InterruptedException, ExecutionException, IOException {
+		Search video = new SearchVideo("Dev Day", 10, 1, SearchVideoSortType.ACCURACY, OutputType.JSON);
+		VideoData result = (VideoData)video.run();	
+		setResponseResult("[[Sync]]\n" +  result.toString());
+	}
+	
+	private void searchVideoAsync() throws IOException, InterruptedException, ExecutionException, DaumOpenApiSDKException {
+		Search video = new SearchVideo("Dev Day");
+		video.runAsync(requestListener);	
 	}
 
 	RequestListener requestListener = new RequestListener(){
